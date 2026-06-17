@@ -1,0 +1,1000 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professional Portfolio - Business Management Expert">
+    <title>Professional Portfolio</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #FFF5F7;
+            --secondary: #FFE4E1;
+            --accent: #E8B4C8;
+            --accent-light: #F4C2C2;
+            --success: #DDA0B5;
+            --warning: #F0D9E8;
+            --light: #FFF9FB;
+            --dark: #3D2C3D;
+            --text-dark: #2C1C2C;
+            --text-light: #3D2C3D;
+            --rose-gold: #D8A8C4;
+            --blush: #FFB6D9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, #FFD1E8 100%);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(248, 187, 208, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(232, 180, 200, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .navbar {
+            background: rgba(255, 245, 247, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 2px solid var(--accent);
+            padding: 1rem 0;
+            box-shadow: 0 8px 32px rgba(232, 180, 200, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--rose-gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+            text-shadow: 0 0 30px rgba(232, 180, 200, 0.3);
+        }
+
+        .nav-link {
+            color: var(--text-dark) !important;
+            font-weight: 500;
+            margin: 0 0.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: linear-gradient(90deg, var(--accent), var(--rose-gold));
+            transition: width 0.3s ease;
+            box-shadow: 0 0 10px rgba(232, 180, 200, 0.5);
+        }
+
+        .nav-link:hover {
+            color: var(--accent) !important;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(232, 180, 200, 0.12) 0%, transparent 70%);
+            animation: float 20s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 100% 0%, rgba(248, 187, 208, 0.08) 0%, transparent 50%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, -30px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text {
+            text-align: center;
+        }
+
+        .hero-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: #1a0f1a;
+            animation: slideInLeft 0.8s ease-out;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            animation: slideInLeft 0.8s ease-out 0.2s both;
+            text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            animation: slideInLeft 0.8s ease-out 0.4s both;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn-custom {
+            padding: 0.75rem 2rem;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .btn-primary-custom {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--rose-gold) 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(232, 180, 200, 0.3);
+        }
+
+        .btn-primary-custom:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(232, 180, 200, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary-custom {
+            background: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+        }
+
+        .btn-secondary-custom:hover {
+            background: rgba(232, 180, 200, 0.1);
+            color: var(--dark);
+            transform: translateY(-3px);
+            border-color: var(--rose-gold);
+            box-shadow: 0 8px 25px rgba(232, 180, 200, 0.25);
+        }
+
+        .hero-image {
+            animation: slideInRight 0.8s ease-out;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 420px;
+            border-radius: 18px;
+            box-shadow: 0 20px 50px rgba(232, 180, 200, 0.2), 
+                        0 0 30px rgba(248, 187, 208, 0.15),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            border: 2px solid var(--accent);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .hero-image img::before {
+            content: '';
+            position: absolute;
+            inset: -10px;
+            background: linear-gradient(135deg, var(--accent), var(--rose-gold), var(--blush));
+            border-radius: 22px;
+            z-index: -1;
+            opacity: 0.25;
+            filter: blur(12px);
+        }
+
+        .hero-image img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 25px 60px rgba(232, 180, 200, 0.28), 
+                        0 0 35px rgba(248, 187, 208, 0.18);
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        section {
+            padding: 5rem 2rem;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: #1a0f1a;
+            position: relative;
+            animation: fadeInUp 0.8s ease-out;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--rose-gold));
+            margin: 1rem auto 0;
+            border-radius: 2px;
+            box-shadow: 0 0 20px rgba(232, 180, 200, 0.4);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .education {
+            background: linear-gradient(135deg, rgba(255, 245, 247, 0.6) 0%, rgba(255, 228, 225, 0.6) 100%);
+            backdrop-filter: blur(10px);
+        }
+
+        .education-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 248, 250, 0.7) 100%);
+            border-left: 4px solid var(--accent);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease-out;
+            box-shadow: 0 4px 20px rgba(232, 180, 200, 0.1);
+            border: 1px solid rgba(232, 180, 200, 0.2);
+        }
+
+        .education-card:hover {
+            transform: translateX(10px);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 245, 247, 0.95) 100%);
+            box-shadow: 0 12px 35px rgba(232, 180, 200, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            border-left-color: var(--rose-gold);
+        }
+
+        .education-card h4 {
+            color: #2C1C2C;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .education-card .institution {
+            color: #A0708A;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-card .year {
+            color: var(--text-dark);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            opacity: 0.75;
+        }
+
+        .education-card p {
+            color: var(--text-dark);
+        }
+
+        .skills {
+            background: linear-gradient(135deg, rgba(255, 248, 250, 0.5) 0%, rgba(255, 209, 232, 0.3) 100%);
+        }
+
+        .skill-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 245, 247, 0.8) 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(232, 180, 200, 0.3);
+            animation: fadeInUp 0.8s ease-out;
+            box-shadow: 0 4px 20px rgba(232, 180, 200, 0.12);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 235, 245, 0.95) 100%);
+            border: 1px solid var(--accent);
+            box-shadow: 0 15px 50px rgba(232, 180, 200, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            color: #C08AAC;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 2px 4px rgba(176, 128, 158, 0.25));
+        }
+
+        .skill-card:hover .skill-icon {
+            color: var(--rose-gold);
+            transform: scale(1.2) rotateY(10deg);
+        }
+
+        .skill-card h5 {
+            color: #1a0f1a;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-card p {
+            color: var(--text-dark);
+            font-size: 0.95rem;
+            opacity: 0.85;
+        }
+
+        .skill-progress {
+            background: rgba(232, 180, 200, 0.15);
+            height: 6px;
+            border-radius: 3px;
+            margin-top: 1rem;
+            overflow: hidden;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .skill-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), var(--rose-gold));
+            border-radius: 3px;
+            transition: width 0.6s ease;
+            animation: progressBar 1.5s ease-out;
+            box-shadow: 0 0 15px rgba(232, 180, 200, 0.4);
+        }
+
+        @keyframes progressBar {
+            from { width: 0; }
+            to { width: var(--progress); }
+        }
+
+        .achievements {
+            background: linear-gradient(135deg, rgba(255, 245, 247, 0.6) 0%, rgba(255, 228, 225, 0.5) 100%);
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--accent), var(--rose-gold));
+            box-shadow: 0 0 20px rgba(232, 180, 200, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 20px;
+            }
+        }
+
+        .timeline-item {
+            margin-bottom: 3rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .timeline-item:nth-child(odd) {
+            margin-left: 0;
+            margin-right: 50%;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            margin-left: 50%;
+            margin-right: 0;
+            text-align: left;
+        }
+
+        @media (max-width: 768px) {
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                margin-left: 0;
+                margin-right: 0;
+                margin-left: 60px;
+                text-align: left;
+            }
+        }
+
+        .timeline-dot {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--accent);
+            border: 3px solid var(--primary);
+            border-radius: 50%;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(232, 180, 200, 0.3);
+        }
+
+        .timeline-item:hover .timeline-dot {
+            width: 28px;
+            height: 28px;
+            background: var(--rose-gold);
+            box-shadow: 0 0 30px rgba(216, 168, 196, 0.6);
+            transform: translateX(-50%) scale(1.2);
+        }
+
+        .timeline-content {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 245, 247, 0.7) 100%);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 3px solid var(--accent);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(232, 180, 200, 0.1);
+        }
+
+        .timeline-item:hover .timeline-content {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 240, 245, 0.95) 100%);
+            box-shadow: 0 12px 35px rgba(232, 180, 200, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            border-left-color: var(--rose-gold);
+        }
+
+        .timeline-content h5 {
+            color: #2C1C2C;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content .year {
+            color: #A0708A;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .timeline-content p {
+            color: var(--text-dark);
+            opacity: 0.9;
+        }
+
+        .interests {
+            background: linear-gradient(135deg, rgba(255, 248, 250, 0.5) 0%, rgba(255, 209, 232, 0.3) 100%);
+        }
+
+        .interest-item {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 245, 247, 0.8) 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease-out;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(232, 180, 200, 0.12);
+            border: 1px solid rgba(232, 180, 200, 0.2);
+        }
+
+        .interest-item:hover {
+            transform: translateY(-10px);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 235, 245, 0.95) 100%);
+            box-shadow: 0 15px 50px rgba(232, 180, 200, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            border-color: var(--accent);
+        }
+
+        .interest-icon {
+            font-size: 3rem;
+            color: #C08AAC;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 2px 4px rgba(176, 128, 158, 0.25));
+        }
+
+        .interest-item:hover .interest-icon {
+            transform: scale(1.3) rotate(10deg);
+            color: var(--rose-gold);
+            filter: drop-shadow(0 4px 8px rgba(216, 168, 196, 0.3));
+        }
+
+        .interest-item h5 {
+            color: #1a0f1a;
+            font-weight: 700;
+        }
+
+        .blogs {
+            background: linear-gradient(135deg, rgba(255, 245, 247, 0.6) 0%, rgba(255, 228, 225, 0.5) 100%);
+        }
+
+        .blog-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 245, 247, 0.8) 100%);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease-out;
+            border: 1px solid rgba(232, 180, 200, 0.3);
+            box-shadow: 0 4px 20px rgba(232, 180, 200, 0.1);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-10px);
+            border: 1px solid var(--accent);
+            box-shadow: 0 20px 50px rgba(232, 180, 200, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--accent), var(--rose-gold));
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .blog-date {
+            color: #A0708A;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .blog-card h5 {
+            color: #1a0f1a;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            line-height: 1.4;
+        }
+
+        .blog-card p {
+            color: var(--text-dark);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            opacity: 0.85;
+        }
+
+        .read-more {
+            color: #C08AAC;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .read-more:hover {
+            color: #8A5A7A;
+            transform: translateX(5px);
+        }
+
+        footer {
+            background: linear-gradient(135deg, rgba(255, 245, 247, 0.9) 0%, rgba(255, 228, 225, 0.9) 100%);
+            padding: 2rem;
+            text-align: center;
+            border-top: 2px solid var(--accent);
+            box-shadow: 0 -4px 20px rgba(232, 180, 200, 0.15);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--accent), var(--rose-gold));
+            color: white;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(232, 180, 200, 0.2);
+        }
+
+        .social-links a:hover {
+            background: linear-gradient(135deg, var(--rose-gold), var(--accent));
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 30px rgba(232, 180, 200, 0.4);
+        }
+
+        footer p {
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .blog-content {
+            padding: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 2rem 1rem;
+                min-height: auto;
+            }
+
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .hero-text p {
+                font-size: 1rem;
+            }
+
+            .hero-image {
+                justify-content: center;
+                margin-top: 2rem;
+            }
+
+            .cta-buttons {
+                justify-content: center;
+            }
+
+            .btn-custom {
+                padding: 0.6rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .skill-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+        }
+
+        .scroll-fade {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .scroll-fade.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-lg">
+            <a class="navbar-brand" href="#home">Portfolio</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#achievements">Journey</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#interests">Interests</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container-lg">
+            <div class="row align-items-center justify-content-center gap-5">
+                <div class="col-lg-8 hero-text">
+                    <h1>Hello, I'm Harrini</h1>
+                    <p>A Design graduate with hands-on experience in Ideaion, Execution and Problem-solving. </problem-solving></p>
+                    <div class="cta-buttons">
+                        <a href="my-cv.pdf" class="btn-custom btn-primary-custom" download>
+                            <i class="fas fa-download me-2"></i>Download CV
+                        </a>
+                        <a href="#contact" class="btn-custom btn-secondary-custom">
+                            <i class="fas fa-envelope me-2"></i>Contact Me
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-5 hero-image">
+                    <img src="PF image.jpg" alt="Profile" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="education" id="education">
+        <div class="container-lg">
+            <h2 class="section-title">Education</h2>
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <div class="education-card">
+                        <h4><i class="fas fa-graduation-cap me-2"></i>Master of Business Administration</h4>
+                        <p class="institution">Xavier Institute of Management, Bhubaneshwar</p>
+                        <p class="year"><i class="far fa-calendar me-2"></i>2026 - 2028</p>
+                        <p>CGPA- aiming 10 </p>
+                    </div>
+                    <div class="education-card">
+                        <h4><i class="fas fa-graduation-cap me-2"></i>Bachelor of Design</h4>
+                        <p class="institution">National Institute of Fashion Technology, Chennai</p>
+                        <p class="year"><i class="far fa-calendar me-2"></i>2019 - 2023</p>
+                        <p>CGPA- 8.9</p>
+                    </div>
+                    <div class="education-card">
+                        <h4><i class="fas fa-certificate me-2"></i>School Education</h4>
+                        <p class="institution">Velammal Matric Hr Sec School, Ponneri</p>
+                        <p class="year"><i class="far fa-calendar me-2"></i>2017 - 2019</p>
+                        <p>Percentage -92.67</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+        <div class="container-lg">
+            <h2 class="section-title">Core Skills</h2>
+            <div class="skill-grid">
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fas fa-chart-line"></i></div>
+                    <h5>Strategic Planning</h5>
+                    <p>Develop comprehensive business strategies for sustainable growth and competitive advantage.</p>
+                    <div class="skill-progress">
+                        <div class="skill-progress-bar" style="--progress: 95%"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fas fa-users"></i></div>
+                    <h5>Leadership</h5>
+                    <p>Inspire and guide teams to achieve organizational excellence and shared vision.</p>
+                    <div class="skill-progress">
+                        <div class="skill-progress-bar" style="--progress: 92%"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fas fa-briefcase"></i></div>
+                    <h5>Project Management</h5>
+                    <p>Successfully manage complex projects from inception to completion within scope and budget.</p>
+                    <div class="skill-progress">
+                        <div class="skill-progress-bar" style="--progress: 90%"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fas fa-chart-pie"></i></div>
+                    <h5>Data Visualisation</h5>
+                    <p>Visualise and present data and provide insights for informed business decisions.</p>
+                    <div class="skill-progress">
+                        <div class="skill-progress-bar" style="--progress: 88%"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fas fa-lightbulb"></i></div>
+                    <h5>Problem Solving</h5>
+                    <p>Identify and implement innovative solutions to complex business challenges.</p>
+                    <div class="skill-progress">
+                        <div class="skill-progress-bar" style="--progress: 93%"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fas fa-handshake"></i></div>
+                    <h5>Stakeholder Management</h5>
+                    <p>Build strong relationships and manage expectations with diverse stakeholder groups.</p>
+                    <div class="skill-progress">
+                        <div class="skill-progress-bar" style="--progress: 91%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements & Journey Section -->
+    <section class="achievements" id="achievements">
+        <div class="container-lg">
+            <h2 class="section-title">My Journey & Achievements</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h5>BEST ACADEMIC PERFORMANCE AWARD - NIFT CHENNAI</h5>
+                        <p class="year">2023 </p>
+                        <p>Awarded by Thiru La. Ganesan, Honorable Governor 
+of Nagaland for the excellence in the academic 
+Performance - The batch 2019-2023 of Fashion and 
+Lifestyle Accessories Department, NIFT Chennai.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h5>Craft-Based Design Project on Thanjavur Painting  </h5>
+                        <p class="year">2022</p>
+                        <p> Researched Thanjavur painting and collaborated with artisans as a design team to create a collection of Indo
+Western lighting.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h5>SCHOLARSHIP FOR HIGHER SECONDARY EDUCATION</h5>
+                        <p class="year">2017- 2019</p>
+                        <p>Received a 50 % scholarship on academic fees during 
+higher secondary level schooling for distinction in 
+studies.</p>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interests & Hobbies Section -->
+    <section class="interests" id="interests">
+        <div class="container-lg">
+            <h2 class="section-title">Interests & Hobbies</h2>
+            <div class="interest-grid">
+                <div class="interest-item">
+                    <div class="interest-icon"><i class="fas fa-book"></i></div>
+                    <h5>Reading</h5>
+                </div>
+                
+                <div class="interest-item">
+                    <div class="interest-icon"><i class="fas fa-chess"></i></div>
+                    <h5>Strategic Games</h5>
+                </div>
+                
+                <div class="interest-item">
+                    <div class="interest-icon"><i class="fas fa-palette"></i></div>
+                    <h5>Creative Arts</h5>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" style="background: rgba(22, 33, 62, 0.5); text-align: center;">
+        <div class="container-lg">
+            <h2 class="section-title">Let's Connect</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                I'm always interested in hearing about new opportunities and challenges. Feel free to reach out!
+            </p>
+            <div class="social-links" style="justify-content: center;">
+                <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" title="Email"><i class="fas fa-envelope"></i></a>
+                <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container-lg">
+            <p>&copy; 2026 Professional Portfolio. All rights reserved.</p>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem;">Designed with <i class="fas fa-heart" style="color: var(--accent);"></i> for Professional Excellence</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Scroll Animation Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('section').forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
